@@ -61,12 +61,12 @@ Run this command under the project directory.
 yarn codegen
 ```
 
-
 #### Generate contract interface
 
 ```
-npx typechain --target=ethers-v5 './abis/Gravity.json'    
+npx typechain --target=ethers-v5 './abis/Gravity.json'
 ```
+
 And move generated `./types/ethers-contracts` to `/src`.
 
 ## Build the project
