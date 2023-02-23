@@ -1,9 +1,7 @@
-// Copyright 2020-2022 OnFinality Limited authors & contributors
-
 import {
   NewGravatarEvent,
   UpdatedGravatarEvent,
-} from "../ethers-contracts/Gravity";
+} from "../types/ethers-contracts/Gravatar";
 import { Gravatar } from "../types";
 
 export async function handleNewGravatar(
@@ -20,10 +18,13 @@ export async function handleUpdatedGravatar(
   event: UpdatedGravatarEvent
 ): Promise<void> {
   let id = event.args.id.toHexString();
+
+  // We first check if the Gravatar already exists, if not we create it
   let gravatar = await Gravatar.get(id);
   if (gravatar == null || gravatar == undefined) {
     gravatar = new Gravatar(id);
   }
+  // Update with new data
   gravatar.owner = event.args.owner;
   gravatar.displayName = event.args.displayName;
   gravatar.imageUrl = event.args.imageUrl;

@@ -1,18 +1,19 @@
 {
   "name": "gravatar-subquery",
   "version": "0.0.1",
-  "description": "This project can be use as a starting point for developing your new Ethereum SubQuery project",
+  "description": "This project can be use as a starting point for developing your new Ethereum SubQuery project, it indexes all Gravatars on Ethereum",
   "main": "dist/index.js",
   "scripts": {
     "build": "subql build",
-    "prepack": "rm -rf dist && npm build",
-    "test": "jest",
+    "codegen": "subql codegen",
     "codegen:abi": "npx typechain --target=ethers-v5 './abis/**/*.json' --out-dir src/types/ethers-contracts",
-    "codegen": "./node_modules/.bin/subql codegen && yarn codegen:abi",
-    "start:docker": "docker-compose pull && docker-compose up --remove-orphans"
+    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
+    "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
+    "prepack": "rm -rf dist && npm run build",
+    "test": "jest"
   },
-  "homepage": "https://github.com/subquery/ethereum-subql-starter",
-  "repository": "github:subquery/ethereum-subql-starter",
+  "homepage": "https://github.com/subquery/eth-gravatar",
+  "repository": "github:subquery/eth-gravatar",
   "files": [
     "dist",
     "schema.graphql",
