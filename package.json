@@ -6,7 +6,6 @@
   "scripts": {
     "build": "subql build",
     "codegen": "subql codegen",
-    "codegen:abi": "npx typechain --target=ethers-v5 './abis/**/*.json' --out-dir src/types/ethers-contracts",
     "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
     "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
     "prepack": "rm -rf dist && npm run build",
