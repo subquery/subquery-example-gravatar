@@ -1,5 +1,5 @@
 {
-  "name": "gravatar-subquery",
+  "name": "subquery-example-gravatar",
   "version": "0.0.1",
   "description": "This project can be use as a starting point for developing your new Ethereum SubQuery project, it indexes all Gravatars on Ethereum",
   "main": "dist/index.js",
@@ -34,7 +34,7 @@
     "ethers": "^5.7.2"
   },
   "devDependencies": {
-    "@subql/cli": "latest",
+    "@subql/cli": "1.12.3",
     "@subql/types": "latest",
     "@typechain/ethers-v5": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "4",

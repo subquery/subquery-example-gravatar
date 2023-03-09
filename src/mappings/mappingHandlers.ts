@@ -1,32 +1,35 @@
 import {
-  NewGravatarEvent,
-  UpdatedGravatarEvent,
-} from "../types/ethers-contracts/Gravatar";
+  NewGravatarLog,
+  UpdatedGravatarLog,
+} from "../types/abi-interfaces/Gravity";
 import { Gravatar } from "../types";
 
-export async function handleNewGravatar(
-  event: NewGravatarEvent
-): Promise<void> {
-  let gravatar = new Gravatar(event.args.id.toHexString());
-  gravatar.owner = event.args.owner;
-  gravatar.displayName = event.args.displayName;
-  gravatar.imageUrl = event.args.imageUrl;
+export async function handleNewGravatar(log: NewGravatarLog): Promise<void> {
+  const gravatar = Gravatar.create({
+    id: log.args.id.toHexString(),
+    owner: log.args.owner,
+    displayName: log.args.displayName,
+    imageUrl: log.args.imageUrl,
+    createdBlock: BigInt(log.blockNumber),
+  });
+
   await gravatar.save();
 }
 
 export async function handleUpdatedGravatar(
-  event: UpdatedGravatarEvent
+  log: UpdatedGravatarLog
 ): Promise<void> {
-  let id = event.args.id.toHexString();
+  const id = log.args.id.toHexString();
 
   // We first check if the Gravatar already exists, if not we create it
   let gravatar = await Gravatar.get(id);
   if (gravatar == null || gravatar == undefined) {
     gravatar = new Gravatar(id);
+    gravatar.createdBlock = BigInt(log.blockNumber);
   }
   // Update with new data
-  gravatar.owner = event.args.owner;
-  gravatar.displayName = event.args.displayName;
-  gravatar.imageUrl = event.args.imageUrl;
+  gravatar.owner = log.args.owner;
+  gravatar.displayName = log.args.displayName;
+  gravatar.imageUrl = log.args.imageUrl;
   await gravatar.save();
 }
