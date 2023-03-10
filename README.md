@@ -1,7 +1,8 @@
 # SubQuery - Starter Package
 
 The Starter Package is an example that you can use as a starting point for developing your SubQuery project.
-A SubQuery package defines which data The SubQuery will index from the Substrate blockchain, and how it will store it.
+
+This project indexes all Ethereum Gravatars created or updated on the Ethereum mainnet.
 
 ## Preparation
 
@@ -97,14 +98,14 @@ Finally, you should see a GraphQL playground is showing in the explorer and the 
 For the `subql-starter` project, you can try to query with the following code to get a taste of how it works.
 
 ```graphql
-{
-  query {
-    starterEntities(first: 10) {
-      nodes {
-        field1
-        field2
-        field3
-      }
+query {
+  gravatars(first: 5, orderBy: CREATED_BLOCK_DESC) {
+    nodes {
+      id
+      owner
+      displayName
+      imageUrl
+      createdBlock
     }
   }
 }

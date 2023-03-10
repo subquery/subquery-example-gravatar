@@ -26,7 +26,7 @@ network:
   # https://documentation.onfinality.io/support/the-enhanced-api-service
   endpoint: "https://eth.api.onfinality.io/public"
   # Optionally provide the HTTP endpoint of a full chain dictionary to speed up processing
-  # dictionary: "https://api.subquery.network/sq/csubquery/ethereum-dictionary"
+  dictionary: "https://eth-dict.api.onfinality.io/"
 
 dataSources:
   - kind: ethereum/Runtime

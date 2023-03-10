@@ -34,7 +34,7 @@
     "ethers": "^5.7.2"
   },
   "devDependencies": {
-    "@subql/cli": "1.12.3",
+    "@subql/cli": "latest",
     "@subql/types": "latest",
     "@typechain/ethers-v5": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "4",
