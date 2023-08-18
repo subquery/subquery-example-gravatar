@@ -54,7 +54,6 @@ query {
 
 You will see the result similar to below:
 
-
 ```json
 {
   "data": {
